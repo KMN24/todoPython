@@ -7,5 +7,17 @@
 </head>
 <body>
     <h2> Какой-то текст </h2>
+    <!-- Внизу используем python с помощью Jinja-->
+    {{todo_list}} <!--это из views.py пришло-->
+    <br>
+    {% for todo in todo_list %}
+        <h3>
+            <!--А здесь мы отоброжаем именно значение объектов-->
+            {{ todo.text }} - {{ todo.created_at}} 
+        </h3>
+        
+    {% endfor %}
+
 </body>
+
 </html>
