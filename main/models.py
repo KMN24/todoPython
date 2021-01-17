@@ -7,3 +7,13 @@ class ToDo (models.Model):
     is_favorite = models.BooleanField(default=False) # задачка важна ли
 
 
+class BookShop(models.Model):
+    title = models.CharField(max_length = 50)
+    subtitle = models.CharField(max_length = 100)
+    description = models.CharField(max_length = 500)
+    price = models.FloatField(default=0)
+    genre = models.CharField(max_length = 50)
+    author = models.CharField(max_length = 50)
+    year = models.IntegerField()
+    date = models.DateTimeField(auto_now_add=True)
+
