@@ -31,7 +31,7 @@
             class="create_input"
             type="text"
             placeholder="Напишите сюда новую задачу"
-            name="bookshop_title"
+            name="todo_text"
           />
           <button class="create_button">Добавить</button>
         </form>
@@ -51,7 +51,9 @@
             <p>{{ todo.created_at}}</p>
             <div class="action_buttons">
               <img src="{% static './icons/unmarked.png' %}" />
-              <img src="{% static './icons/delete.png' %}" />
+              <a href="{% url 'delete-todo' todo.id %}">
+                <img src="{% static './icons/delete.png' %}" />
+              </a>
             </div>
           </div>
         </div>
