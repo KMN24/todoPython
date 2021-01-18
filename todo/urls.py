@@ -25,6 +25,7 @@ urlpatterns = [
     path("test/", test, name="test"),
     path("test2/", second),
     path("books/", bookShop),
+    path("add-book-shop", add_bookshop, name="add-book-shop"),
     path("add-todo/", add_todo, name="add-todo"),
 ]   + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT) \
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

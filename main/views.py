@@ -17,6 +17,27 @@ def bookShop(request):
     book_shop = BookShop.objects.all()
     return render(request, "books.html", { "book_shop": book_shop })
 
+def add_bookshop(request):
+    form = request.POST
+    title = form["bookshop_title"]
+    subtitle = form["bookshop_subtitle"]
+    description = form["bookshop_description"]
+    price = form["bookshop_price"]
+    genre = form["bookshop_genre"]
+    author = form["bookshop_author"]
+    year = form["bookshop_year"]
+    bookshop = BookShop(
+        title = title, 
+        subtitle = subtitle,
+        description = description,
+        price = price,
+        genre = genre,
+        author = author,
+        year = year
+        )
+    bookshop.save()
+    return redirect(bookShop)
+
 def add_todo(request):
     form = request.POST 
     text = form["todo_text"]
@@ -24,3 +45,4 @@ def add_todo(request):
     todo= ToDo(text=text) # 1 text - это тот который в models.py
     todo.save()
     return redirect(test) # обратно вернемся к странице test.html
+    # здесь test это функция
