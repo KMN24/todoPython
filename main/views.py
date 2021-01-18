@@ -53,8 +53,25 @@ def add_todo(request):
     return redirect(test)  # обратно вернемся к странице test.html
     # здесь test это функция
 
-
 def delete_todo(request, id):
     todo = ToDo.objects.get(id=id)
     todo.delete()
     return redirect(test)
+
+def mark_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_favorite = True
+    todo.save()
+    return redirect(test)
+
+def unmark_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_favorite = False
+    todo.save()
+    return redirect(test)
+
+# def done_todo(request, id):
+#     todo = ToDo.objects.get(id=id)
+#     todo.is_closed = True
+#     todo.save()
+#     return redirect(test)
