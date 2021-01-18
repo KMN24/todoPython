@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import ToDo, BookShop
 
@@ -16,3 +16,11 @@ def second(request):
 def bookShop(request):
     book_shop = BookShop.objects.all()
     return render(request, "books.html", { "book_shop": book_shop })
+
+def add_todo(request):
+    form = request.POST 
+    text = form["todo_text"]
+    #print(text)
+    todo= ToDo(text=text) # 1 text - это тот который в models.py
+    todo.save()
+    return redirect(test) # обратно вернемся к странице test.html

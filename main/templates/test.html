@@ -1,58 +1,62 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo list</title>
-    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}"> 
-</head>
-<body>
-    {% comment %} <h2> Какой-то текст </h2> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}" />
+  </head>
+  <body>
+    {% comment %}
+    <h2>Какой-то текст</h2>
+    {% endcomment %}
     <!-- Внизу используем python с помощью Jinja-->
-    {% comment %} {{todo_list}} <!--это из views.py пришло-->
-    <br>
+    {% comment %} {{todo_list}}
+    <!--это из views.py пришло-->
+    <br />
     {% for todo in todo_list %}
-        <h3>
-            <!--А здесь мы отоброжаем именно значение объектов-->
-            {{ todo.text }} - {{ todo.created_at}} 
-        </h3>    
+    <h3>
+      <!--А здесь мы отоброжаем именно значение объектов-->
+      {{ todo.text }} - {{ todo.created_at}}
+    </h3>
     {% endfor %} {% endcomment %}
 
     <section>
-        <div class="create_container">
-            <input 
-                class="create_input"
-                type="text"
-                placeholder="Напишите сюда новую задачу"
-            >
-            <button class="create_button">Добавить</button>
-        </div>
+      <div class="create_container">
+        <form action="{% url 'add-todo' %}" method="POST">
+          {% csrf_token %}
+          <input
+            class="create_input"
+            type="text"
+            placeholder="Напишите сюда новую задачу"
+            name="todo_text"
+          />
+          <button class="create_button">Добавить</button>
+        </form>
+      </div>
 
-        <div class="todo_container">
-        
-        {% for todo in todo_list  %}
-            <div class="todo_item">
-                <div class="todo_item_header">
-                    <label class="checkbox_container" >
-                        <input id="item1" type="checkbox" onclick="done()">
-                        <span  class="checkmark" onclick="done()"></span>
-                    </label>
-                    <h4>{{ todo.text }}</h4>
-                </div>
-                <div class="todo_item_footer">
-                    <p> {{ todo.created_at}} </p>
-                    <div class="action_buttons">
-                        <img src="{% static './icons/unmarked.png' %}">
-                        <img src="{% static './icons/delete.png' %}">
-                    </div>
-                </div>
+      <div class="todo_container">
+        {% for todo in todo_list %}
+        <div class="todo_item">
+          <div class="todo_item_header">
+            <label class="checkbox_container">
+              <input id="item1" type="checkbox" onclick="done()" />
+              <span class="checkmark" onclick="done()"></span>
+            </label>
+            <h4>{{ todo.text }}</h4>
+          </div>
+          <div class="todo_item_footer">
+            <p>{{ todo.created_at}}</p>
+            <div class="action_buttons">
+              <img src="{% static './icons/unmarked.png' %}" />
+              <img src="{% static './icons/delete.png' %}" />
             </div>
-            {% endfor %}
+          </div>
         </div>
-        
+        {% endfor %}
+      </div>
     </section>
-</body>
-
+  </body>
 </html>
