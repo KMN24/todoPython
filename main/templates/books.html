@@ -63,18 +63,23 @@
                 name="bookshop_year"
             />
             <br>
-            <button class="create_button">Добавить</button>
+            <button class="create_button">Добавить новую книгу</button>
         </form>
+        <br>
        </div>
       <div class="bookshop_container">
         {% for book in book_shop %}
-            <h1> {{ book.title }} </h1>
+            <h1> Название {{ book.title }} </h1>
             <h3> {{ book.subtitle }} </h3>
             <h4> {{ book.description }} </h4>
             <h4> {{ book.price }} </h4>
             <h4> {{ book.genre }} </h4>
             <h4> {{ book.author }} </h4>
             <h4> {{ book.year }} </h4>
+        
+            <button class="create_btn" url='mark-bookshop'>Избранное</button>
+            <button class="create_btn">Удалить</button>
+            <br><br>
         {% endfor %}
       </div>
     </section>

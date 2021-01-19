@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books-detail</title>
+</head>
+<body>
+        {% for book in bookshop %}
+            <h1> Название {{ book.title }} </h1>
+            <h3> {{ book.subtitle }} </h3>
+            <h4> {{ book.description }} </h4>
+            <h4> {{ book.price }} </h4>
+            <h4> {{ book.genre }} </h4>
+            <h4> {{ book.author }} </h4>
+            <h4> {{ book.year }} </h4>
+        
+            <button class="create_btn" url='mark-bookshop'>Избранное</button>
+            <button class="create_btn">Удалить</button>
+            <br><br>
+        {% endfor %}
+</body>
+</html>
