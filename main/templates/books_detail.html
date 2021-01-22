@@ -1,23 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books-detail</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book shop</title>
+    <link rel="stylesheet" href="{% static 'styles/books-detail.css' %}" />
+  </head>
+  <body>
 <body>
-        {% for book in bookshop %}
-            <h1> Название {{ book.title }} </h1>
-            <h3> {{ book.subtitle }} </h3>
-            <h4> {{ book.description }} </h4>
-            <h4> {{ book.price }} </h4>
-            <h4> {{ book.genre }} </h4>
-            <h4> {{ book.author }} </h4>
-            <h4> {{ book.year }} </h4>
-        
-            <button class="create_btn" url='mark-bookshop'>Избранное</button>
-            <button class="create_btn">Удалить</button>
+    <section>
+      <div class="bookshop_container">
+          <div class="bookshop_item
+            {% if bookshop.is_favorite %}
+            marked
+          {% endif %}
+          ">
+            <div class="bookshop_item_header">
+                <a href="{% url 'books-detail' bookshop.id %}"><h2>{{ bookshop.title }} </h2> </a>
+                <h4> Подзаголовок : {{ bookshop.subtitle }}</h4>
+                <h4> Описание : {{ bookshop.description }}</h4>
+                <h4> Цена : {{ bookshop.price }}$ </h4>
+                <h4> Жанр : {{ bookshop.genre }}</h4>
+                <h4> Автор:  {{ bookshop.author }} </h4>
+                <h4> Дата выхода : {{ bookshop.year }}</h4>
+                
+            </div>
+            <div class="bookshop_item_footer">
+                <a href="{% url 'mark-bookshop' bookshop.id %}"> <button class="create_btn">Избранное</button></a>
+                <a href="{% url 'delete-bookshop' bookshop.id %}"> <button class="create_btn">Удалить</button></a>
+            </div>
             <br><br>
-        {% endfor %}
+          </div>
+      </div>
+    </section>
 </body>
 </html>

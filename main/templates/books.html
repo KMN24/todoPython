@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book shop</title>
-    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/style_bookshop.css' %}" />
   </head>
   <body>
 <body>
@@ -63,23 +63,28 @@
                 name="bookshop_year"
             />
             <br>
-            <button class="create_button">Добавить новую книгу</button>
+            <button class="create_btn">Добавить новую книгу</button>
         </form>
         <br>
        </div>
       <div class="bookshop_container">
         {% for book in book_shop %}
-            <h1> Название {{ book.title }} </h1>
-            <h3> {{ book.subtitle }} </h3>
-            <h4> {{ book.description }} </h4>
-            <h4> {{ book.price }} </h4>
-            <h4> {{ book.genre }} </h4>
-            <h4> {{ book.author }} </h4>
-            <h4> {{ book.year }} </h4>
-        
-            <button class="create_btn" url='mark-bookshop'>Избранное</button>
-            <button class="create_btn">Удалить</button>
+          <div class="bookshop_item
+            {% if book.is_favorite %}
+            marked
+          {% endif %}
+          ">
+            <div class="bookshop_item_header">
+                <a href="{% url 'books-detail' book.id %}"><h2>{{ book.title }} </h2> </a>
+                <h4> Автор:  {{ book.author }} </h4>
+                <h4> Цена : {{ book.price }}$ </h4>
+            </div>
+            <div class="bookshop_item_footer">
+                <a href="{% url 'mark-bookshop' book.id %}"> <button class="create_btn">Избранное</button></a>
+                <a href="{% url 'delete-bookshop' book.id %}"> <button class="create_btn">Удалить</button></a>
+            </div>
             <br><br>
+          </div>
         {% endfor %}
       </div>
     </section>

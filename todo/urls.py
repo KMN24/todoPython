@@ -27,9 +27,9 @@ urlpatterns = [
     path("books/", bookShop),
     path("add-book-shop", add_bookshop, name="add-book-shop"),
     path("mark-bookshop/<id>/", mark_bookshop, name="mark-bookshop"),
-    path("unmark-bookshop/<id>/", unmark_bookshop, name="unmark-bookshop"),
     path("delete-bookshop/<id>/", delete_bookshop, name="delete-bookshop"),
-    path("books-detail/", BooksDetail, name="books-detail"),
+    path("books-detail/<id>/", BooksDetail, name="books-detail"),
+    
     path("add-todo/", add_todo, name="add-todo"),
     path("delete-todo/<id>/", delete_todo, name="delete-todo"),
     path("mark-todo/<id>/", mark_todo, name="mark-todo"),

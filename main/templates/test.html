@@ -38,7 +38,7 @@
       </div>
 
       <div class="todo_container">
-        {% for todo in todo_list %}
+        {% for todo in todo_list %} 
         <div class="todo_item
           {% if todo.is_favorite %}
             marked
@@ -49,14 +49,16 @@
         ">
           <div class="todo_item_header">
             <label class="checkbox_container">
+            <a href="{% url 'close-todo' todo.id %}">
               <input id="item1" type="checkbox" onclick="done()"
                 {% if todo.is_closed %}
                   checked
                 {% endif %}
                />
               <span class="checkmark" onclick="done()"></span>
+            </a>
             </label>
-            <h4> <a href="{% url 'close-todo' todo.id %} "> {{ todo.text }} </a> </h4>
+            <h4> <a href="{% url 'close-todo' todo.id %}"> {{ todo.text }} </a> </h4>
           </div>
           <div class="todo_item_footer">
             <p>{{ todo.created_at}}</p>

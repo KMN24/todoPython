@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #263238;
+}
+
+section {
+  width: 100%;
+  padding: 20px;
+
+}
+
+.create_btn {
+  padding: 8px 10px;
+  background-color: #ce93d8;
+  border: 1px solid #ce93d8;
+  color: white;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.create_btn:active {
+  border: 1px solid #ce93d8;
+  box-shadow: 2px 2px 5px 3px #fce4ec;
+}
+
+.bookshop_container {
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.bookshop_item {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 80%;
+  padding: 10px 15px;
+  background-color: #c8e6c9;
+  margin-bottom: 20px;
+}
+.bookshop_item.marked {
+  background-color: #ffe082;
+  border: 2px solid #fad66a;
+}
+.bookshop_item_header {
+  display:block;
+  min-height: 30px;
+  height: 90%;
+}
+.bookshop_item_header h2 {
+  font-size: 17px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+.bookshop_item_header h4 {
+  font-size: 13px;
+  font-family: sans-serif;
+}
+.bookshop_item_header a{
+  text-decoration: none;
+}
+.bookshop_item_footer {
+  height: 10%;
+  width: 60%;
+}
+.bookshop_item_footer p {
+  font-size: 15px;
+  font-family: sans-serif;
+}
+.bookshop_item_footer .action_buttons {
+  display: flex;
+}
+

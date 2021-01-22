@@ -45,13 +45,7 @@ def add_bookshop(request):
 
 def mark_bookshop(request, id):
     bookshop = BookShop.objects.get(id=id)
-    bookshop.is_favorite = True
-    bookshop.save()
-    return redirect(bookShop)
-
-def unmark_bookshop(request, id):
-    bookshop = BookShop.objects.get(id=id)
-    bookshop.is_favorite = False
+    bookshop.is_favorite = not bookshop.is_favorite
     bookshop.save()
     return redirect(bookShop)
 
@@ -60,8 +54,8 @@ def delete_bookshop(request, id):
     bookshop.delete()
     return redirect(bookShop)
 
-def BooksDetail(request):
-    bookshop = BookShop.objects.all()
+def BooksDetail(request, id):
+    bookshop = BookShop.objects.get(id=id)
     return render(request, "books_detail.html", {"bookshop": bookshop})
 
 def add_todo(request):
